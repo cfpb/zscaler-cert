@@ -1,6 +1,6 @@
 # zscaler-cert
 
-Zscaler's [public certificate](https://raw.githubusercontent.com/cfpb/zscaler-cert/refs/heads/main/zscaler_root_ca.pem) for your [application-specific trust store](https://help.zscaler.com/zia/adding-custom-certificate-application-specific-trust-store).
+Zscaler's [public certificate](https://raw.githubusercontent.com/cfpb/zscaler-cert/refs/heads/main/zscaler_root_ca.pem) (also available as a [DER binary file](https://raw.githubusercontent.com/cfpb/zscaler-cert/refs/heads/main/zscaler_root_ca.cer)) for your [application-specific trust store](https://help.zscaler.com/zia/adding-custom-certificate-application-specific-trust-store).
 
 ## What is `ca_bundle_with_zscaler.pem`?
 
