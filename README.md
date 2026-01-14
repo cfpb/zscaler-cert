@@ -15,8 +15,7 @@ If your base image doesn't include certificate management tooling, you'll do som
 
 ```
 ADD https://raw.githubusercontent.com/cfpb/zscaler-cert/refs/heads/main/zscaler_root_ca.pem /usr/local/share/ca-certificates/zscaler_root_ca.crt
-RUN apk add --no-cache --no-check-certificate ca-certificates && \
-    update-ca-certificates &&
+RUN apk add --no-cache --no-check-certificate ca-certificates && update-ca-certificates
 ```
 
 If npm is failing, you might have to:
