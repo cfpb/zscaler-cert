@@ -26,6 +26,19 @@ ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 
 Here's how it looks in consumerfinance.gov's [`Dockerfile`](https://github.com/cfpb/consumerfinance.gov/compare/ZsCaLeR).
 
+If you're running a JAVA based application, like Jenkins, use keytool to import the zscaler certs
+
+```
+# Add Zscaler Root CA certificate and rebuild CA certificates
+ADD https://raw.githubusercontent.com/cfpb/zscaler-cert/3982ebd9edf9de9267df8d1732ff5a6f88e38375/zscaler_root_ca.pem \
+ /usr/local/share/ca-certificates/zscaler-root-public.cert
+
+RUN keytool -noprompt -importcert -alias zscaler -keystore "/opt/java/openjdk/lib/security/cacerts" -storepass changeit -file "/usr/local/share/ca-certificates/zscaler-root-public.cert"
+```
+
+Add the above to the Dockerfile to avoid cert errors when Jenkins installs plugins from "updates.jenkins.io" 
+
+
 ## How to fix npm and pip SSL errors on a *nix machine
 
 If npm is throwing `UNABLE_TO_GET_ISSUER_CERT_LOCALLY` or pip ain't working, download Zscaler's public key and define some [important environment variables](https://help.zscaler.com/zia/adding-custom-certificate-application-specific-trust-store) for npm and pip by doing the following:
